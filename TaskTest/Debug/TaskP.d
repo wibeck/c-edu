@@ -1,0 +1,1 @@
+TaskP.o: ../TaskP.cpp

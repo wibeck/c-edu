@@ -1,0 +1,63 @@
+
+**** Build of configuration Debug for project TaskTest ****
+
+Nothing to build for project TaskTest
+Info: Nothing to build for Parallel
+Info: Nothing to build for ParallelTest
+21:10:38 **** Incremental Build of configuration Debug for project TaskTest ****
+make all 
+Building file: ../TaskP.cpp
+Invoking: Cygwin C++ Compiler
+g++ -fopenmp -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"TaskP.d" -MT"TaskP.o" -o "TaskP.o" "../TaskP.cpp"
+Finished building: ../TaskP.cpp
+ 
+Building target: TaskTest.exe
+Invoking: Cygwin C++ Linker
+g++ -fopenmp  -o "TaskTest.exe"  ./TaskP.o   
+Finished building target: TaskTest.exe
+ 
+21:10:39 **** Incremental Build of configuration Debug for project Test2 ****
+make all 
+make: Nothing to be done for 'all'.
+Info: Nothing to build for Parallel
+Info: Nothing to build for ParallelTest
+21:10:45 **** Incremental Build of configuration Debug for project TaskTest ****
+make all 
+make: Nothing to be done for 'all'.
+21:10:45 **** Incremental Build of configuration Debug for project Test2 ****
+make all 
+make: Nothing to be done for 'all'.
+Info: Nothing to build for Parallel
+Info: Nothing to build for ParallelTest
+21:12:01 **** Incremental Build of configuration Debug for project TaskTest ****
+make all 
+Building file: ../TaskP.cpp
+Invoking: Cygwin C++ Compiler
+g++ -fopenmp -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"TaskP.d" -MT"TaskP.o" -o "TaskP.o" "../TaskP.cpp"
+Finished building: ../TaskP.cpp
+ 
+Building target: TaskTest.exe
+Invoking: Cygwin C++ Linker
+g++ -fopenmp  -o "TaskTest.exe"  ./TaskP.o   
+Finished building target: TaskTest.exe
+ 
+21:12:02 **** Incremental Build of configuration Debug for project Test2 ****
+make all 
+make: Nothing to be done for 'all'.
+Info: Nothing to build for Parallel
+Info: Nothing to build for ParallelTest
+21:20:27 **** Incremental Build of configuration Debug for project TaskTest ****
+make all 
+Building file: ../TaskP.cpp
+Invoking: Cygwin C++ Compiler
+g++ -fopenmp -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"TaskP.d" -MT"TaskP.o" -o "TaskP.o" "../TaskP.cpp"
+Finished building: ../TaskP.cpp
+ 
+Building target: TaskTest.exe
+Invoking: Cygwin C++ Linker
+g++ -fopenmp  -o "TaskTest.exe"  ./TaskP.o   
+Finished building target: TaskTest.exe
+ 
+21:20:28 **** Incremental Build of configuration Debug for project Test2 ****
+make all 
+make: Nothing to be done for 'all'.

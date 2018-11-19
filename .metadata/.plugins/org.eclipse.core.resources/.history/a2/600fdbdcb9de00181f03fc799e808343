@@ -1,0 +1,62 @@
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (int argc, char *argv[]) {
+
+  int i=0;
+  int nums[] { 3, 4, 5, 6, 1, 9};
+  int nums2[]{ 5, 4, 3, 2, 7, -1};
+	int nums3[] { 3, 4, 5, 6, 1, 9};
+	int share = 5;
+	int tid; 
+	
+  printf("Adding in a simple for-Loop: \n");
+	#pragma omp parallel private(tid)
+	{
+		tid = omp_get_thread_num();
+		#pragma omp for 
+		for(i = 0; i < 6; i++) {
+			printf("Thread %d: Adding %d and %d \n", tid, nums[i], nums2[i]);
+			nums[i]+= nums2[i];
+		} 
+	}
+	
+	
+	for( i = 0; i < 6; i++) {
+		printf("%d ", nums[i]);
+	}
+	
+	 printf("\n Adding in a simple for-Loop with shared vars: \n");
+	#pragma omp parallel private(tid) shared(share)
+	{
+		tid = omp_get_thread_num();
+		#pragma omp for 
+			for(i = 0; i < 6; i++) {
+				printf("Thread %d: Adding %d and %d + %d \n", tid, nums3[i], nums2[i],share);
+				nums3[i] += nums2[i] + share;
+			} 
+		
+	}
+	
+	for( i = 0; i < 6; i++) {
+		printf("%d ", nums3[i]);
+	}
+	
+	 printf("\n Calculating the scalar-product of nums x nums3 via reduction \n");
+	int sum = 0;
+	#pragma omp parallel private(tid) reduction(+:sum)
+	 {
+		tid = omp_get_thread_num();
+		#pragma omp for 
+		for(i = 0; i < 6; i++) {
+			printf("Thread %d: Adding %d * %d to sum \n",tid, nums[i], nums3[i]);
+			sum += nums[i]* nums3[i];
+		} 
+	}
+	
+	
+		printf("the scalar-product of nums X nums3 is: %d ", sum);
+	
+ return 0;
+}

@@ -1,0 +1,73 @@
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+
+
+int phase1(int input1, int input2){
+	return input1 + input2;
+}
+int phase2(int input1, int input2) {
+	return input1 + input2 * 2;
+}
+int phase3(int input1, int input2) {
+	return input1 * 2 + input2 * 2;
+}
+
+
+int main() {
+
+	int tid = 0;
+	printf("Demonstrating parallel sections: \n");
+	#pragma omp parallel sections private(tid)
+	{
+		tid = omp_get_thread_num();
+
+		#pragma omp section
+
+			printf("Thread %d: calculated %d \n", tid, phase1(4,5));
+		#pragma omp section
+
+			printf("Thread %d: calculated %d \n", tid, phase2(4,5));
+		#pragma omp section
+
+			printf("Thread %d: calculated %d \n", tid, phase3(4,5));
+	}
+	printf("Demonstrating single directive with nowait: \n");
+	#pragma omp parallel private(tid)
+	{
+		tid = omp_get_thread_num();
+
+			printf("Hi, this is thread %d before single section! \n", tid);
+		#pragma omp single nowait
+			{
+			printf("Hi, this is thread %d executing the single section! \n", tid);
+			}
+
+		printf("Hi, this is thread %d after single section! \n", tid);
+	}
+
+	printf("Demonstrating barriers: \n");
+		#pragma omp parallel private(tid)
+		{
+			tid = omp_get_thread_num();
+
+				printf("Hi, this is thread %d before barrier! \n", tid);
+				#pragma omp barrier
+				printf("Hi, this is thread %d after barrier! \n", tid);
+		}
+
+	printf("Demonstrating firstprivate: \n");
+	int incr = 0;
+	int i = 0;
+			#pragma omp parallel for firstprivate(incr)
+			for (i = 0, i =< 10, i++){
+				tid = omp_get_thread_num();
+
+					printf("Hi, this is thread %d with incr %d! \n", tid, incr);
+
+			}
+
+}
+
+

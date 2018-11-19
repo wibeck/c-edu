@@ -1,0 +1,24 @@
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+/**
+ * Hello OpenMP World prints the number of threads and the current thread id
+ */
+int main (int argc, char *argv[]) {
+
+  int i;
+  int nums[] { 3, 4, 5, 6, 1, 9};
+  int nums2[]{ 5, 4, 3, 2, 7, -1};
+
+  
+	#pragma omp parallel
+	#pragma omp for 
+	for(i = 0; i <; i++) {
+		nums[i] += nums2[i];
+	} 
+	
+	for( i = 0; i < 4; i++) {
+		printf("%d ", nums[i]);
+	}
+ return 0;
+}

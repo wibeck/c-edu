@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Parallel/src/ForExample&apos; to &apos;ForExample.cpp&apos;" description="Rename resource &apos;ForExample&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/ForExample" name="ForExample.cpp" stamp="1540825374058" updateReferences="true"/>
+</session>

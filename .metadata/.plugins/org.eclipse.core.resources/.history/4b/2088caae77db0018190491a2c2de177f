@@ -1,0 +1,18 @@
+#include <omp.h>
+#include <iostream>
+
+int main() {
+	int nthreads, tid;
+	#pragma omp parallel private(nthreads, tid)
+	{
+		tid = omp_get_thread_num();
+		std::cout << "Hello World from thread = " + tid;
+		
+		if(tid == 0) {
+			nthreads = omp_get_num_threads();
+			printf("Number of threads = %d\n", nthreads);
+		}
+	}
+	
+	return 0;
+}

@@ -1,0 +1,39 @@
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+
+
+int phase1(int input1, int input2){
+	return input1 + input2;
+}
+int phase2(int input1, int input2) {
+	return input1 + input2 * 2;
+}
+int phase3(int input1, int input2) {
+	return input1 * 2 + input2 * 2;
+}
+
+
+int main() {
+
+	int tid;
+	#pragma omp parallel sections private(tid)
+	{
+		tid = omp_get_thread_num();
+
+		#pragma omp section
+
+			printf("Thread %d: calculated %d \n", tid, phase1(4,5));
+		#pragma omp section
+
+			printf("Thread %d: calculated %d \n", tid, phase2(4,5));
+		#pragma omp section
+
+			printf("Thread %d: calculated %d \n", tid, phase3(4,5));
+	}
+
+
+}
+
+
